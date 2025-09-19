@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class SpehereMovement : MonoBehaviour
 {
-    void Start()
+    [SerializeField] Transform transform;
+    [SerializeField] float speed;
+
+    private void Update()
     {
-        
+        Movement();
     }
 
-    void Update()
+    private void Movement()
     {
-        
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
