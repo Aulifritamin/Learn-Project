@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpehereMovement : MonoBehaviour
 {
-    [SerializeField] Transform transform;
+    [SerializeField] private Transform transform;
     [SerializeField] float speed;
 
     private void Update()
