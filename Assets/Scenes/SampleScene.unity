@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 493484402}
   - component: {fileID: 493484405}
   - component: {fileID: 493484404}
+  - component: {fileID: 493484406}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -545,8 +546,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb3b55891c42004692e8ec21006a8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  timeToIncrease: 0.5
-  _scoreText: {fileID: 493484402}
+  _timeToIncrease: 0.5
+  _input: {fileID: 493484404}
+--- !u!114 &493484406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493484400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a134c24a92720c14296990b3f310226c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _label: {fileID: 493484402}
+  _score: {fileID: 493484405}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
