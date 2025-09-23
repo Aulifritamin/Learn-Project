@@ -1,30 +1,32 @@
+using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private float timeToIncrease = 0.5f;
-    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private float _timeToIncrease = 0.5f;
+    [SerializeField] private InputController _input;
+
+    public event Action<int> ScoreChanged;
 
     private Coroutine _coroutine;
+    private WaitForSeconds _waitTime;
 
     private int _scoreValue = 0;
-    private string _scoreString = "Score: ";
 
     private void Start()
     {
-        _scoreText.text = _scoreString + _scoreValue;
+        _waitTime = new WaitForSeconds(_timeToIncrease);
     }
 
     private void OnEnable()
     {
-        Tracker.OnLeftClick += ToggleCorotine;
+        _input.Clicked += ToggleCorotine;
     }
 
     private void OnDisable()
     {
-        Tracker.OnLeftClick -= ToggleCorotine;
+        _input.Clicked -= ToggleCorotine;
     }
 
     private void ToggleCorotine()
@@ -40,14 +42,14 @@ public class Score : MonoBehaviour
         }
     }
 
-    IEnumerator InscreaseScore()
+    private IEnumerator InscreaseScore()
     {
-        while (true)
+        while (enabled)
         {
             _scoreValue++;
-            _scoreText.text = _scoreString + _scoreValue;
+            ScoreChanged?.Invoke(_scoreValue);
 
-            yield return new WaitForSeconds(timeToIncrease);
+            yield return _waitTime;
         }
     }
 }
