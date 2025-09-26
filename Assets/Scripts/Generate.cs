@@ -41,9 +41,7 @@ public class Generate : MonoBehaviour
 
             for (int i = 0; i < randomItemCount; i++)
             {
-                Vector3 offset = Random.insideUnitSphere * _spawnJitter;
-
-                GenerateNewObject(childScale, parentPos, offset, out Rigidbody rb);
+                GenerateNewObject(childScale, parentPos, out Rigidbody rb);
 
                 newCubesRigidbodies.Add(rb);
             }
@@ -58,7 +56,7 @@ public class Generate : MonoBehaviour
         }
     }
 
-    private void GenerateNewObject(Vector3 childScale, Vector3 parentPos, Vector3 offset, out Rigidbody newRigidbody)
+    private void GenerateNewObject(Vector3 childScale, Vector3 parentPos, out Rigidbody newRigidbody)
     {
         float childSplitChance = _splitChance * _childSplitMultiplier;
 
