@@ -20,7 +20,7 @@ public class ClickRayCast : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo, _maxDistance))
             {
-                hitInfo.rigidbody?.GetComponent<Generate>()?.Boom();
+                hitInfo.rigidbody?.GetComponent<Generate>()?.ExecuteAction();
             }
         }
     }

@@ -19,7 +19,7 @@ public class Generate : MonoBehaviour
     [SerializeField] private float _explosionForce = 300f;
     [SerializeField] private float _explosionRadius = 10f;
 
-    public void Boom()
+    public void ExecuteAction()
     {
         float randomSplit = Random.value;
 
