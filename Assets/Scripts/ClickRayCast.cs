@@ -7,10 +7,10 @@ public class ClickRayCast : MonoBehaviour
 
     private void Update()
     {
-        isClicked();
+        InputCheck();
     }
 
-    private void isClicked()
+    private void InputCheck()
     {
         int keyAction = 0;
 
