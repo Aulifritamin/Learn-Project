@@ -121,7 +121,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3727308802796076668}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -139,7 +139,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &4370494007091793233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcc0549dc9f19dd4cab0c77199b8c87e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::Generate
   _prefab: {fileID: 3727308802796076668}
-  _rigidbody: {fileID: 2175708518067135771}
+  _minChild: 2
+  _maxChild: 6
+  _scaleFactor: 0.5
+  _spawnJitter: 0.5
+  _splitChance: 1
+  _childSplitMultiplier: 0.5
+  _minScale: 0.1
+  _explosionForce: 200
+  _explosionRadius: 10
