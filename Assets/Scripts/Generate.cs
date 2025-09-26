@@ -43,9 +43,7 @@ public class Generate : MonoBehaviour
             {
                 Vector3 offset = Random.insideUnitSphere * _spawnJitter;
 
-                Rigidbody rb;
-
-                GenerateNewObject(childScale, parentPos, offset, out rb);
+                GenerateNewObject(childScale, parentPos, offset, out Rigidbody rb);
 
                 newCubesRigidbodies.Add(rb);
             }
@@ -66,20 +64,24 @@ public class Generate : MonoBehaviour
 
         GameObject newObject = Instantiate(_prefab, parentPos, Quaternion.identity);
 
-        newRigidbody = newObject.GetComponent<Rigidbody>();
-        Generate newChance = newObject.GetComponent<Generate>();
-        Renderer newRenderer = newObject.GetComponent<Renderer>();
+        newRigidbody = newObject?.GetComponent<Rigidbody>();
+        Generate newChance = newObject?.GetComponent<Generate>();
+        Renderer newRenderer = newObject?.GetComponent<Renderer>();
 
-        newObject.transform.localScale = childScale;
-        newRenderer.material.color = Random.ColorHSV();
-        newChance.SetSplitChance(childSplitChance);     
+        if(newObject != null) 
+            newObject.transform.localScale = childScale;
+
+        if (newRenderer != null) 
+            newRenderer.material.color = Random.ColorHSV();
+
+        newChance?.SetSplitChance(childSplitChance);     
     }
 
     private void ApplyExplosion(List<Rigidbody> rigidBody, Vector3 explosionPosition)
     {
         foreach (Rigidbody rb in rigidBody)
         {
-            rb.AddExplosionForce(_explosionForce, explosionPosition, _explosionRadius);
+            rb?.AddExplosionForce(_explosionForce, explosionPosition, _explosionRadius);
         }
     }
 
