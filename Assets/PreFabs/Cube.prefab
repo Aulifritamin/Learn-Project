@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 719962789056521010}
   - component: {fileID: 8508320970964720440}
   - component: {fileID: 8274199583829843701}
+  - component: {fileID: 1372616031175278552}
   - component: {fileID: 4117047721484562193}
   - component: {fileID: 2175708518067135771}
-  - component: {fileID: 4370494007091793233}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -92,6 +92,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1372616031175278552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727308802796076668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c9ea27a71b4ce4f9a271b58f9531a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
+  _splitChance: 1
 --- !u!65 &4117047721484562193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,25 +153,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &4370494007091793233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3727308802796076668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcc0549dc9f19dd4cab0c77199b8c87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Generate
-  _prefab: {fileID: 3727308802796076668}
-  _minChild: 2
-  _maxChild: 6
-  _scaleFactor: 0.5
-  _spawnJitter: 0.5
-  _splitChance: 1
-  _childSplitMultiplier: 0.5
-  _minScale: 0.1
-  _explosionForce: 200
-  _explosionRadius: 10

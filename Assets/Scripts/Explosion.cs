@@ -1,16 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _explosionForce = 300f;
+    [SerializeField] private float _explosionRadius = 10f;
 
-    // Update is called once per frame
-    void Update()
+    public void AppleExplosion(List<Rigidbody> rigidbodies, Vector3 explosionPosition)
     {
-        
+        foreach (Rigidbody rb in rigidbodies)
+        {
+            rb.AddExplosionForce(_explosionForce, explosionPosition, _explosionRadius);
+        }
     }
 }

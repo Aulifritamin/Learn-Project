@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class ClickRayCast : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private float _maxDistance = 100f;
+    [SerializeField] private GameEvent _event;
 
     private void Update()
     {
@@ -14,13 +16,18 @@ public class ClickRayCast : MonoBehaviour
     {
         int keyAction = 0;
 
-        if(Input.GetMouseButtonDown(keyAction)) 
+        if (_event == null) return;
+        
+        if (Input.GetMouseButtonDown(keyAction))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, _maxDistance))
+            if (Physics.Raycast(ray, out var hitInfo, _maxDistance))
             {
-                hitInfo.rigidbody?.GetComponent<Generate>().ExecuteAction();
+                if (hitInfo.collider.TryGetComponent(out CubeSplit cube))
+                {
+                    _event.RaiseCube(cube);
+                }
             }
         }
     }

@@ -1,16 +1,9 @@
+using System;
 using UnityEngine;
 
 public class GameEvent : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public event Action<CubeSplit> CubeClicked;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void RaiseCube(CubeSplit cube) => CubeClicked?.Invoke(cube);
 }
