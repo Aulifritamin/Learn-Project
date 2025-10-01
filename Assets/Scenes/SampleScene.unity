@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickRayCast
   _camera: {fileID: 330585545}
   _maxDistance: 100
-  _event: {fileID: 509116804}
+  _inputListener: {fileID: 509116811}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 509116808}
   - component: {fileID: 509116809}
   - component: {fileID: 509116810}
+  - component: {fileID: 509116811}
   m_Layer: 0
   m_Name: _Systems
   m_TagString: Untagged
@@ -538,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d302fcc301830134f8d34b6110b49f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Orchestor
-  _event: {fileID: 509116804}
+  _rayCast: {fileID: 330585548}
   _spawner: {fileID: 509116808}
   _explosion: {fileID: 509116810}
   _childSplitMultiplier: 0.5
@@ -601,6 +602,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Explosion
   _explosionForce: 300
   _explosionRadius: 10
+--- !u!114 &509116811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cd29011c4d05842a91e4d91385e6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputListener
 --- !u!1001 &795927235
 PrefabInstance:
   m_ObjectHideFlags: 0
