@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Orchestrator : MonoBehaviour
 {
-    [SerializeField] private GameEvent _event;
+    [SerializeField] private ClickRayCast _rayCast;
     [SerializeField] private ChildsSpawner _spawner;
     [SerializeField] private Explosion _explosion;
 
@@ -16,17 +16,17 @@ public class Orchestrator : MonoBehaviour
 
     private void OnEnable()
     {
-        _event.CubeClicked += OnCubeClicked;
+        _rayCast.RaiseCube += OnCubeClicked;
     }
 
     private void OnDisable()
     {
-        _event.CubeClicked -= OnCubeClicked;
+        _rayCast.RaiseCube -= OnCubeClicked;
     }
 
     private void OnCubeClicked(CubeSplit cube)
     {
-        
+
         float randomSplit = Random.value;
 
         if (cube.transform.localScale.x < _minScale)
@@ -39,12 +39,12 @@ public class Orchestrator : MonoBehaviour
         {
             int randomItemCount = Random.Range(_minChild, _maxChild + 1);
 
-            _explosion.AppleExplosion(_spawner.ChildSpawn(cube, _childSplitMultiplier, randomItemCount, _scaleFactor), cube.transform.position);
-            _spawner.Despawn(cube);
+            List<Rigidbody> childrensRigidbody = _spawner.ChildSpawn(cube, _childSplitMultiplier, randomItemCount, _scaleFactor);
+
+            _explosion.AppleExplosion(childrensRigidbody, cube.transform.position);
+
         }
-        else
-        {
-            _spawner.Despawn(cube);
-        }
+
+        _spawner.Despawn(cube);
     }
 }

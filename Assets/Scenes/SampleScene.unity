@@ -305,9 +305,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4819e3cd0b994b147ba3d6f30e3b112d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::ClickRayCast
   _camera: {fileID: 330585545}
   _maxDistance: 100
+  _event: {fileID: 509116804}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +493,114 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf77fad42c231d4689dc57dbf14c8bd, type: 3}
+--- !u!1 &509116803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509116807}
+  - component: {fileID: 509116806}
+  - component: {fileID: 509116804}
+  - component: {fileID: 509116808}
+  - component: {fileID: 509116809}
+  - component: {fileID: 509116810}
+  m_Layer: 0
+  m_Name: _Systems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &509116804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1fbe715d5fbd64ca880f82ca6637e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameEvent
+--- !u!114 &509116806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d302fcc301830134f8d34b6110b49f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Orchestor
+  _event: {fileID: 509116804}
+  _spawner: {fileID: 509116808}
+  _explosion: {fileID: 509116810}
+  _childSplitMultiplier: 0.5
+  _minScale: 0.1
+  _scaleFactor: 0.5
+  _minChild: 2
+  _maxChild: 6
+--- !u!4 &509116807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.89641, y: 4.3, z: 7.16316}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509116808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48318105db2586548883074cb5384905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildsSpawner
+  cubePrefab: {fileID: 1372616031175278552, guid: fcf77fad42c231d4689dc57dbf14c8bd, type: 3}
+  _colored: {fileID: 509116809}
+--- !u!114 &509116809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6228abc799a0fdd4995d9336ed02f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Colored
+--- !u!114 &509116810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17db4661cced4f419740a814dab3d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Explosion
+  _explosionForce: 300
+  _explosionRadius: 10
 --- !u!1001 &795927235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -804,7 +913,8 @@ PrefabInstance:
       propertyPath: _explosionForce
       value: 300
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4370494007091793233, guid: fcf77fad42c231d4689dc57dbf14c8bd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1090,3 +1200,4 @@ SceneRoots:
   - {fileID: 1191475075}
   - {fileID: 795927235}
   - {fileID: 433824941}
+  - {fileID: 509116807}

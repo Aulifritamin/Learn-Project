@@ -8,9 +8,9 @@ public class Explosion : MonoBehaviour
 
     public void AppleExplosion(List<Rigidbody> rigidbodies, Vector3 explosionPosition)
     {
-        foreach (Rigidbody rb in rigidbodies)
+        foreach (Rigidbody rigidbody in rigidbodies)
         {
-            rb.AddExplosionForce(_explosionForce, explosionPosition, _explosionRadius);
+            rigidbody.AddExplosionForce(_explosionForce, explosionPosition, _explosionRadius);
         }
     }
 }

@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class Colored : MonoBehaviour
 {
-    public void ChangeColor(CubeSplit cube)
+
+    public Color GetRandomColor()
     {
-        Renderer renderer = cube.GetComponent<Renderer>();
-        
-        if (renderer != null)
-        {
-            renderer.material.color = new Color(Random.value, Random.value, Random.value);
-        }
+        return Random.ColorHSV();
     }
 }

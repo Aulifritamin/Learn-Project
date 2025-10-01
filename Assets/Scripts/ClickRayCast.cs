@@ -5,30 +5,32 @@ public class ClickRayCast : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private float _maxDistance = 100f;
-    [SerializeField] private GameEvent _event;
+    [SerializeField] private InputListener _inputListener;
 
-    private void Update()
+    public event Action<CubeSplit> RaiseCube;
+
+    private void OnEnable()
     {
-        InputCheck();
+        _inputListener.OnInputReceived += InputCheck;
     }
 
-    private void InputCheck()
+    private void OnDisable()
     {
-        int keyAction = 0;
+        _inputListener.OnInputReceived -= InputCheck;
+    }
 
-        if (_event == null) return;
-        
-        if (Input.GetMouseButtonDown(keyAction))
-        {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+    private void InputCheck(Vector2 screenPosition)
+    {
+        if (RaiseCube == null) return;
 
-            if (Physics.Raycast(ray, out var hitInfo, _maxDistance))
+            Ray ray = _camera.ScreenPointToRay(screenPosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, _maxDistance))
             {
                 if (hitInfo.collider.TryGetComponent(out CubeSplit cube))
                 {
-                    _event.RaiseCube(cube);
+                    RaiseCube(cube);
                 }
             }
-        }
     }
 }

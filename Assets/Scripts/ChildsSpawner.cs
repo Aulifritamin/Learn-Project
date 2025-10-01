@@ -7,9 +7,10 @@ public class ChildsSpawner : MonoBehaviour
     [SerializeField] private CubeSplit cubePrefab;
     [SerializeField] private Colored _colored;
 
+
     public List<Rigidbody> ChildSpawn(CubeSplit parentCube, float splitChance, int childCount, float scaleFactor)
     {
-        List<Rigidbody> childrensRb = new List<Rigidbody>();
+        List<Rigidbody> childRigidbody = new List<Rigidbody>();
 
         Vector3 parentScale = parentCube.transform.localScale;
         Vector3 parentPos = parentCube.transform.position;
@@ -19,23 +20,26 @@ public class ChildsSpawner : MonoBehaviour
 
         for (int i = 0; i < childCount; i++)
         {
-            var (_, Rigidbody) = SpawnChildCube(parentPos, childScale, newSplitChance);
-            childrensRb.Add(Rigidbody);
+            Rigidbody rigidbody = SpawnChildCube(parentPos, childScale, newSplitChance);
+            childRigidbody.Add(rigidbody);
         }
 
-        return childrensRb;
+        return childRigidbody;
     }
 
-    public (CubeSplit cube, Rigidbody rigidbody) SpawnChildCube(Vector3 position, Vector3 scale, float newSplitChance)
+    private Rigidbody SpawnChildCube(Vector3 position, Vector3 scale, float newSplitChance)
     {
         CubeSplit newCube = Instantiate(cubePrefab, position, Quaternion.identity);
-        Rigidbody rb = newCube.GetComponent<Rigidbody>();
+
+        Rigidbody rigidbody = newCube.Rigidbody;
+        Color newColor = _colored.GetRandomColor();
 
         newCube.transform.localScale = scale;
         newCube.SetSplitChance(newSplitChance);
-        _colored.ChangeColor(newCube);
+        newCube.ApplyColor(newColor);
+        
+        return rigidbody;
 
-        return (newCube, rb);
     }
 
     public void Despawn(CubeSplit cube)
