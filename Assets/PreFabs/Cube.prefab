@@ -103,8 +103,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87c9ea27a71b4ce4f9a271b58f9531a0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cube
+  m_EditorClassIdentifier: Assembly-CSharp::CubeSplit
   _splitChance: 1
+  _explodeForce: 10
+  _explodeRadius: 2
 --- !u!65 &4117047721484562193
 BoxCollider:
   m_ObjectHideFlags: 0

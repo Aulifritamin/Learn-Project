@@ -3,27 +3,35 @@ using UnityEngine;
 public class CubeSplit : MonoBehaviour
 {
     [SerializeField] private float _splitChance = 1f;
+    [SerializeField] private float _explodeForce = 10f;
+    [SerializeField] private float _explodeRadius = 2f;
 
-    private Renderer _renderer;
-    private Rigidbody _rigidbody;
-
+    public Rigidbody Rigidbody { get; private set; }
+    public Renderer Renderer { get; private set; }
+    
     public float SplitChance => _splitChance;
-    public Rigidbody Rigidbody => _rigidbody;
-    public Renderer Renderer => _renderer;
-
-    private void Awake()
-    {
-        _renderer = GetComponent<Renderer>();
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+    public float ExplodeForce => _explodeForce;
+    public float ExplodeRadius => _explodeRadius;
 
     public void SetSplitChance(float value)
     {
         _splitChance = value;
     }
-    
+
     public void ApplyColor(Color color)
     {
-        _renderer.material.color = color;
+        Renderer.material.color = color;
+    }
+    
+    public void ChangeExplodeSettings(float force, float radius)
+    {
+        _explodeForce = force;
+        _explodeRadius = radius;
+    }
+
+    private void Awake()
+    {
+        Renderer = GetComponent<Renderer>();
+        Rigidbody = GetComponent<Rigidbody>();
     }
 }

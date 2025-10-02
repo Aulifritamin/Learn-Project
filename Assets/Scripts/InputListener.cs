@@ -5,7 +5,7 @@ public class InputListener : MonoBehaviour
 {
     private int keyAction = 0;
 
-    public event Action<Vector2> OnInputReceived;
+    public event Action<Vector2> InputReceived;
    
     private void Update()
     {
@@ -13,7 +13,7 @@ public class InputListener : MonoBehaviour
         {
             Vector2 mousePosition = Input.mousePosition;
             
-            OnInputReceived?.Invoke(mousePosition);
+            InputReceived?.Invoke(mousePosition);
         }
     }
 }

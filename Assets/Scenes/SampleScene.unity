@@ -503,11 +503,11 @@ GameObject:
   m_Component:
   - component: {fileID: 509116807}
   - component: {fileID: 509116806}
-  - component: {fileID: 509116804}
   - component: {fileID: 509116808}
   - component: {fileID: 509116809}
   - component: {fileID: 509116810}
   - component: {fileID: 509116811}
+  - component: {fileID: 509116812}
   m_Layer: 0
   m_Name: _Systems
   m_TagString: Untagged
@@ -515,18 +515,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &509116804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509116803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1fbe715d5fbd64ca880f82ca6637e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameEvent
 --- !u!114 &509116806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,9 +530,12 @@ MonoBehaviour:
   _rayCast: {fileID: 330585548}
   _spawner: {fileID: 509116808}
   _explosion: {fileID: 509116810}
+  _explode: {fileID: 509116812}
   _childSplitMultiplier: 0.5
   _minScale: 0.1
   _scaleFactor: 0.5
+  _multplierForce: 2
+  _multiplierRadius: 2
   _minChild: 2
   _maxChild: 6
 --- !u!4 &509116807
@@ -614,6 +605,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64cd29011c4d05842a91e4d91385e6f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputListener
+--- !u!114 &509116812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509116803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192cfb9a2ec57dd4a844e843cfc9f3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Explode
+  _explosionEffect: {fileID: 417761080263594739, guid: 7800b8f6b712bfe49bd663eeb3ebe1e4, type: 3}
 --- !u!1001 &795927235
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,21 +7,21 @@ public class ClickRayCast : MonoBehaviour
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private InputListener _inputListener;
 
-    public event Action<CubeSplit> RaiseCube;
+    public event Action<CubeSplit> CubeHit;
 
     private void OnEnable()
     {
-        _inputListener.OnInputReceived += InputCheck;
+        _inputListener.InputReceived += InputCheck;
     }
 
     private void OnDisable()
     {
-        _inputListener.OnInputReceived -= InputCheck;
+        _inputListener.InputReceived -= InputCheck;
     }
 
     private void InputCheck(Vector2 screenPosition)
     {
-        if (RaiseCube == null) return;
+        if (CubeHit == null) return;
 
             Ray ray = _camera.ScreenPointToRay(screenPosition);
 
@@ -29,7 +29,7 @@ public class ClickRayCast : MonoBehaviour
             {
                 if (hitInfo.collider.TryGetComponent(out CubeSplit cube))
                 {
-                    RaiseCube(cube);
+                    CubeHit(cube);
                 }
             }
     }
