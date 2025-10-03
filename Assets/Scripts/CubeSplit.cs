@@ -13,6 +13,12 @@ public class CubeSplit : MonoBehaviour
     public float ExplodeForce => _explodeForce;
     public float ExplodeRadius => _explodeRadius;
 
+    private void Awake()
+    {
+        Renderer = GetComponent<Renderer>();
+        Rigidbody = GetComponent<Rigidbody>();
+    }
+    
     public void SetSplitChance(float value)
     {
         _splitChance = value;
@@ -29,9 +35,4 @@ public class CubeSplit : MonoBehaviour
         _explodeRadius = radius;
     }
 
-    private void Awake()
-    {
-        Renderer = GetComponent<Renderer>();
-        Rigidbody = GetComponent<Rigidbody>();
-    }
 }

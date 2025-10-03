@@ -529,15 +529,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Orchestor
   _rayCast: {fileID: 330585548}
   _spawner: {fileID: 509116808}
-  _explosion: {fileID: 509116810}
-  _explode: {fileID: 509116812}
-  _childSplitMultiplier: 0.5
+  _impulse: {fileID: 509116810}
+  _explosion: {fileID: 509116812}
   _minScale: 0.1
-  _scaleFactor: 0.5
-  _multplierForce: 2
-  _multiplierRadius: 2
-  _minChild: 2
-  _maxChild: 6
 --- !u!4 &509116807
 Transform:
   m_ObjectHideFlags: 0
@@ -567,6 +561,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChildsSpawner
   cubePrefab: {fileID: 1372616031175278552, guid: fcf77fad42c231d4689dc57dbf14c8bd, type: 3}
   _colored: {fileID: 509116809}
+  _childSplitMultiplier: 0.5
+  _scaleFactor: 0.5
+  _multplierForce: 2
+  _multiplierRadius: 2
+  _minChild: 2
+  _maxChild: 6
 --- !u!114 &509116809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,6 +618,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Explode
   _explosionEffect: {fileID: 417761080263594739, guid: 7800b8f6b712bfe49bd663eeb3ebe1e4, type: 3}
+  _upwardsModifier: 0
+  _forceMode: 2
 --- !u!1001 &795927235
 PrefabInstance:
   m_ObjectHideFlags: 0

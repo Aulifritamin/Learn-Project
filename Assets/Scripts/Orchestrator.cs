@@ -5,7 +5,6 @@ public class Orchestrator : MonoBehaviour
 {
     [SerializeField] private ClickRayCast _rayCast;
     [SerializeField] private ChildsSpawner _spawner;
-    [SerializeField] private ChildImpulse _impulse;
     [SerializeField] private RadialExplosion _explosion;
 
     [SerializeField] private float _minScale = 0.1f;
@@ -36,7 +35,7 @@ public class Orchestrator : MonoBehaviour
         {
             List<Rigidbody> childrensRigidbody = _spawner.SpawnChildren(cube);
 
-            _impulse.AppleExplosion(childrensRigidbody, cube.transform.position);
+            _explosion.AppleImpulse(childrensRigidbody, cube.transform.position);
         }
         else
         {

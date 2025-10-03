@@ -35,25 +35,24 @@ public class ChildsSpawner : MonoBehaviour
 
         return childRigidbody;
     }
+    
+    public void Despawn(CubeSplit cube)
+    {
+        Destroy(cube.gameObject);
+    }
 
     private Rigidbody SpawnChildCube(Vector3 position, Vector3 scale, float newSplitChance, float newForce, float newRadius)
     {
         CubeSplit newCube = Instantiate(cubePrefab, position, Quaternion.identity);
 
-        Rigidbody rigidbody = newCube.Rigidbody;
         Color newColor = _colored.GetRandomColor();
 
         newCube.transform.localScale = scale;
         newCube.SetSplitChance(newSplitChance);
         newCube.ChangeExplodeSettings(newForce, newRadius);
         newCube.ApplyColor(newColor);
-        
-        return rigidbody;
 
-    }
+        return newCube.Rigidbody;
 
-    public void Despawn(CubeSplit cube)
-    {
-        Destroy(cube.gameObject);
     }
 }

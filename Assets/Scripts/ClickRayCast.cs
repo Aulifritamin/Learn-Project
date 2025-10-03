@@ -21,7 +21,8 @@ public class ClickRayCast : MonoBehaviour
 
     private void InputCheck(Vector2 screenPosition)
     {
-        if (CubeHit == null) return;
+        if (CubeHit == null)
+            return;
 
             Ray ray = _camera.ScreenPointToRay(screenPosition);
 

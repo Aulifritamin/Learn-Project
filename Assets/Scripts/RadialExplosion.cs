@@ -4,7 +4,11 @@ using UnityEngine;
 public class RadialExplosion : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _explosionEffect;
+
     [SerializeField] private float _upwardsModifier = 0f;
+    [SerializeField] private float _explosionForce = 300f;
+    [SerializeField] private float _explosionRadius = 10f;
+
     [SerializeField] private ForceMode _forceMode = ForceMode.VelocityChange;
 
     private float _destroingTime = 1.5f;
@@ -25,13 +29,23 @@ public class RadialExplosion : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            Rigidbody rb = collider.attachedRigidbody;
+            Rigidbody rigidbody = collider.attachedRigidbody;
 
-            if (rb == null) continue;
+            if (rigidbody == null)
+                continue;
 
-            if (rb == cube.Rigidbody) continue;
+            if (rigidbody == cube.Rigidbody)
+                continue;
 
-            rb.AddExplosionForce(cube.ExplodeForce, parentPosition, cube.ExplodeRadius, _upwardsModifier, _forceMode);
+            rigidbody.AddExplosionForce(cube.ExplodeForce, parentPosition, cube.ExplodeRadius, _upwardsModifier, _forceMode);
+        }
+    }
+
+    public void AppleImpulse(List<Rigidbody> rigidbodies, Vector3 explosionPosition)
+    {
+        foreach (Rigidbody rigidbody in rigidbodies)
+        {
+            rigidbody.AddExplosionForce(_explosionForce, explosionPosition, _explosionRadius);
         }
     }
 }
